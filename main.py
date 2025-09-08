@@ -1,6 +1,9 @@
 import hashlib
 
 url_dict = {}
+base_domain = "localhost"
+protocol = "http"
+base_url = f"{protocol}://{base_domain}"
 
 
 def main():
@@ -15,12 +18,18 @@ def url_shortner(*, url: str):
     md5_hash_object = hashlib.md5()
     md5_hash_object.update(url_utf8_encoded)
 
-    shortened_url_code = md5_hash_object.hexdigest()[:6]
+    ## will work for 4B urls
+    shortened_url_code = md5_hash_object.hexdigest()[:8]
 
     if shortened_url_code not in url_dict:
         url_dict[shortened_url_code] = url_utf8_encoded
+    elif url_dict[shortened_url_code] == url_utf8_encoded:
+        return shortened_url_code
+    else:
+        ## handle collisions
+        pass
 
-    return shortened_url_code
+    return f"{base_url}/{shortened_url_code}"
 
 
 if __name__ == "__main__":
