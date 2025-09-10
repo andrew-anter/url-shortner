@@ -1,4 +1,4 @@
-from url_shortner.functions import url_shortner
+from functions import url_shortner
 
 
 def test_nothing():
