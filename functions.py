@@ -13,13 +13,9 @@ def url_shortner(*, url: str):
 
     ## will work for 4B urls
     shortened_url_code = md5_hash_object.hexdigest()[:8]
+    url = f"{base_url}/{shortened_url_code}"
 
     if shortened_url_code not in url_dict:
         url_dict[shortened_url_code] = url_utf8_encoded
-    elif url_dict[shortened_url_code] == url_utf8_encoded:
-        return shortened_url_code
-    else:
-        ## handle collisions
-        pass
 
-    return f"{base_url}/{shortened_url_code}"
+    return url
