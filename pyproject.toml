@@ -7,13 +7,10 @@ requires-python = ">=3.13"
 dependencies = []
 
 [dependency-groups]
-dev = [
-    "pytest>=8.4.2",
-]
+dev = ["pytest>=8.4.2"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["src"]
+testpaths = ["."]
 
 [tool.setuptools.packages.find]
 where = ["src"]
